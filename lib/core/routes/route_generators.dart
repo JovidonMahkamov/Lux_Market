@@ -1,0 +1,53 @@
+
+import 'package:flutter/material.dart';
+import 'package:lux_market/core/routes/route_names.dart';
+import 'package:lux_market/features/auth/presentation/pages/create_account_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/forgot_password_otp_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/forgot_password_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/login_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/new_password_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/register_page.dart';
+import 'package:lux_market/features/auth/presentation/pages/send_otp_page.dart';
+import 'package:lux_market/features/bottom_navbar/bottom_nav_bar.dart';
+
+import '../../features/auth/presentation/pages/splash_page.dart';
+
+class AppRoute {
+
+  Route onGenerateRoute(RouteSettings routeSettings) {
+    switch (routeSettings.name) {
+      case RouteNames.splash:
+        return MaterialPageRoute(builder: (_) => const SplashPage());
+      case RouteNames.register:
+        return MaterialPageRoute(builder: (_) => const RegisterPage());
+      case RouteNames.sendOtp:
+        final email = routeSettings.arguments as String;
+        return MaterialPageRoute(builder: (_) =>  SendOtpPage(email: email));
+      case RouteNames.createAccount:
+        return MaterialPageRoute(builder: (_) => const CreateAccountPage());
+      case RouteNames.login:
+        return MaterialPageRoute(builder: (_) => const LoginPage());
+      case RouteNames.forgotPassword:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
+      case RouteNames.forgotPasswordOtp:
+        final email = routeSettings.arguments as String;
+        return MaterialPageRoute(builder: (_) =>  ForgotPasswordOtpPage(email: email));
+      case RouteNames.newPasswordPage:
+        return MaterialPageRoute(builder: (_) => const NewPasswordPage());
+      case RouteNames.bottomNavBar:
+        return MaterialPageRoute(builder: (_) => const BottomNavBarPage());
+      default:
+        return _errorRoute();
+    }
+  }
+
+  Route<dynamic> _errorRoute() {
+    return MaterialPageRoute(
+      builder:
+          (_) => Scaffold(
+        appBar: AppBar(title: const Text('Error')),
+        body: const Center(child: Text('Page not found')),
+      ),
+    );
+  }
+}
