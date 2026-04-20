@@ -8,4 +8,5 @@ class RouteNames {
   static const String forgotPasswordOtp = '/forgotPasswordOtp';
   static const String newPasswordPage = '/newPasswordPage';
   static const String bottomNavBar = '/bottomNavBar';
+  static const String productPage = '/productPage';
 }

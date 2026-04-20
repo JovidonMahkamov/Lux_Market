@@ -9,6 +9,7 @@ import 'package:lux_market/features/auth/presentation/pages/new_password_page.da
 import 'package:lux_market/features/auth/presentation/pages/register_page.dart';
 import 'package:lux_market/features/auth/presentation/pages/send_otp_page.dart';
 import 'package:lux_market/features/bottom_navbar/bottom_nav_bar.dart';
+import 'package:lux_market/features/home/presentation/pages/products_page.dart';
 
 import '../../features/auth/presentation/pages/splash_page.dart';
 
@@ -36,6 +37,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const NewPasswordPage());
       case RouteNames.bottomNavBar:
         return MaterialPageRoute(builder: (_) => const BottomNavBarPage());
+      case RouteNames.productPage:
+        return MaterialPageRoute(builder: (_) => const ProductsPage());
       default:
         return _errorRoute();
     }

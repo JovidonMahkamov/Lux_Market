@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lux_market/core/routes/route_names.dart';
 
 class ShopItemWidget extends StatelessWidget {
   final String title;
@@ -65,29 +66,9 @@ class ShopItemWidget extends StatelessWidget {
           ),
 
           /// button
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20.w,
-              vertical: 10.h,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFFE6D9FF),
-                  Color(0xFFD2C2FF),
-                ],
-              ),
-            ),
-            child: Text(
-              "Ko'rish",
-              style: TextStyle(
-                color: const Color(0xFF6A85F1),
-                fontWeight: FontWeight.w600,
-                fontSize: 14.sp,
-              ),
-            ),
-          )
+          ElevatedButton(onPressed: (){
+            Navigator.pushNamed(context, RouteNames.productPage);
+          }, child: Text("Ko'rish")),
         ],
       ),
     );
