@@ -25,6 +25,9 @@ class AppColors {
   static const Color textHint = Color(0xFFADA0BC);
   static const Color textOnPrimary = Color(0xFFFFFFFF);
   static const Color textLink = Color(0xFF7B5EA7);
+  static const Color grey = Color(0xFF898794);
+  static const Color darkGrey = Color(0xFF2F3542);
+  static const Color blue = Color(0xFF4C69FF);
 
   // ─── Border / Divider ───────────────────────────────────────────────────────
   static const Color border = Color(0xFFE2D9F0);
@@ -40,6 +43,11 @@ class AppColors {
   static const Color warningLight = Color(0xFFFFF3E0);
   static const Color info = Color(0xFF5B8DEF);
   static const Color infoLight = Color(0xFFEBF1FD);
+
+  // ─── Button Colors ──────────────────────────────────────────────────────────
+  static const Color backButton = Color(0xFF6A85F1);
+  static const Color white = Color(0xffFEFEFE);
+  static const Color purple = Color(0xffBA90FF);
 
   // ─── Shadow Colors ──────────────────────────────────────────────────────────
   static const Color shadowPrimary = Color(0x337B5EA7);

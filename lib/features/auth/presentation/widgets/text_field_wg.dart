@@ -51,7 +51,7 @@ class _TextFieldWidgetState extends State<TextFieldWidgetBoard> {
           fillColor:  Colors.white,
           contentPadding: EdgeInsets.symmetric(
             horizontal: 16.w,
-            vertical: 18.h,
+            vertical: 16.h,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:lux_market/core/routes/route_names.dart';
 import 'package:lux_market/features/auth/presentation/pages/create_account_page.dart';
@@ -9,12 +8,15 @@ import 'package:lux_market/features/auth/presentation/pages/new_password_page.da
 import 'package:lux_market/features/auth/presentation/pages/register_page.dart';
 import 'package:lux_market/features/auth/presentation/pages/send_otp_page.dart';
 import 'package:lux_market/features/bottom_navbar/bottom_nav_bar.dart';
+import 'package:lux_market/features/home/presentation/pages/notification_page.dart';
+import 'package:lux_market/features/home/presentation/pages/product_detail_page.dart';
 import 'package:lux_market/features/home/presentation/pages/products_page.dart';
+import 'package:lux_market/features/profile/presentation/pages/settings_page.dart';
 
 import '../../features/auth/presentation/pages/splash_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
 
 class AppRoute {
-
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case RouteNames.splash:
@@ -23,7 +25,7 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const RegisterPage());
       case RouteNames.sendOtp:
         final email = routeSettings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  SendOtpPage(email: email));
+        return MaterialPageRoute(builder: (_) => SendOtpPage(email: email));
       case RouteNames.createAccount:
         return MaterialPageRoute(builder: (_) => const CreateAccountPage());
       case RouteNames.login:
@@ -32,13 +34,23 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordPage());
       case RouteNames.forgotPasswordOtp:
         final email = routeSettings.arguments as String;
-        return MaterialPageRoute(builder: (_) =>  ForgotPasswordOtpPage(email: email));
+        return MaterialPageRoute(
+          builder: (_) => ForgotPasswordOtpPage(email: email),
+        );
       case RouteNames.newPasswordPage:
         return MaterialPageRoute(builder: (_) => const NewPasswordPage());
       case RouteNames.bottomNavBar:
         return MaterialPageRoute(builder: (_) => const BottomNavBarPage());
       case RouteNames.productPage:
         return MaterialPageRoute(builder: (_) => const ProductsPage());
+      case RouteNames.productDetailPage:
+        return MaterialPageRoute(builder: (_) => ProductDetailPage());
+      case RouteNames.notificationPage:
+        return MaterialPageRoute(builder: (_) => NotificationPage());
+      case RouteNames.settingsPage:
+        return MaterialPageRoute(builder: (_) => SettingsPage());
+      case RouteNames.editProfile:
+        return MaterialPageRoute(builder: (_) => EditProfilePage());
       default:
         return _errorRoute();
     }
@@ -46,8 +58,7 @@ class AppRoute {
 
   Route<dynamic> _errorRoute() {
     return MaterialPageRoute(
-      builder:
-          (_) => Scaffold(
+      builder: (_) => Scaffold(
         appBar: AppBar(title: const Text('Error')),
         body: const Center(child: Text('Page not found')),
       ),

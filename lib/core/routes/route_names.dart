@@ -9,4 +9,8 @@ class RouteNames {
   static const String newPasswordPage = '/newPasswordPage';
   static const String bottomNavBar = '/bottomNavBar';
   static const String productPage = '/productPage';
+  static const String productDetailPage = '/productDetailPage';
+  static const String notificationPage = '/notificationPage';
+  static const String settingsPage = '/settingsPage';
+  static const String editProfile = '/editProfile';
 }

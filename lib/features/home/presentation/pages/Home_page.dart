@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconly/iconly.dart';
+import 'package:lux_market/core/routes/route_names.dart';
 import 'package:lux_market/features/auth/presentation/widgets/text_field_wg.dart';
 import 'package:lux_market/features/home/presentation/widgets/filter_bottom_sheet.dart';
 import 'package:lux_market/features/home/presentation/widgets/shop_item_widget.dart';
+
+import '../../../../core/constants/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,61 +41,86 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            SizedBox(width: 15.w),
-            CircleAvatar(radius: 26, backgroundColor: Colors.grey),
-            SizedBox(width: 20.w),
-            Text("Salom, Sevinch"),
+            SizedBox(width: 5.w),
+            CircleAvatar(radius: 28, backgroundColor: AppColors.white),
+            SizedBox(width: 12.w),
+            Text("Salom, Mijoz", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: AppColors.darkGrey),),
           ],
         ),
         actions: [
           CircleAvatar(
-            radius: 20,
-            backgroundColor: Colors.white,
-            child: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
+            radius: 28,
+            backgroundColor: AppColors.white,
+            child: GestureDetector(
+              onTap: () {Navigator.pushNamed(context, RouteNames.notificationPage);},
+              child: SvgPicture.asset(
                 "assets/home/Notification.svg",
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
+                width: 28,
+                height: 28,
               ),
             ),
           ),
-          SizedBox(width: 10.w),
+          SizedBox(width: 20.w),
         ],
       ),
       body: Container(
         decoration: const BoxDecoration(gradient: _backgroundGradient),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+            padding: EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 10),
             child: Column(
               children: [
-                TextFieldWidgetBoard(
-                  controller: searchController,
-                  text: "Qidiruv",
-                  obscureText: false,
-                  readOnly: false,
-                  prefixIcon: Icon(IconlyLight.search),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        builder: (_) {
-                          return FilterBottomSheet(
-                            onSelected: (value) {
-                              searchController.text = value;
-                            },
-                          );
-                        },
-                      );
-                    },
-                    icon: Icon(IconlyLight.filter),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFieldWidgetBoard(
+                        controller: searchController,
+                        text: "Do’kon qidirish...",
+                        obscureText: false,
+                        readOnly: false,
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.all(12),
+                          child: SvgPicture.asset(
+                            "assets/home/search.svg",
+                            width: 25,
+                            height: 25,
+                          ),
+                        ),
+                        height: 50.h,
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (_) {
+                            return FilterBottomSheet(
+                              onSelected: (value) {
+                                searchController.text = value;
+                              },
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        height: 50.h,
+                        width: 50.w,
+                        decoration: BoxDecoration(
+                          gradient: AppColors.buttonGradient,
+                          borderRadius: BorderRadius.circular(16.r),
+                        ),
+                        child: const Icon(
+                          IconlyLight.filter,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 20.h,),
+                SizedBox(height: 24.h),
                 Expanded(
                   child: ListView.builder(
                     itemCount: 10,

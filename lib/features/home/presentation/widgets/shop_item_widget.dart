@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lux_market/core/routes/route_names.dart';
 
 class ShopItemWidget extends StatelessWidget {
@@ -14,62 +15,85 @@ class ShopItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 18.h),
-      padding: EdgeInsets.all(14.w),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(22.r),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 70.w,
-            height: 70.w,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(16.r),
+    return GestureDetector(
+      onTap: (){Navigator.pushNamed(context, RouteNames.productPage);},
+      child: Container(
+        margin: EdgeInsets.only(bottom: 18.h),
+        padding: EdgeInsets.all(8.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18.r),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 75.w,
+              height: 75.w,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(16.r),
+              ),
             ),
+            SizedBox(width: 14.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 6.h),
+                  Row(
+                    children: [
+                      SvgPicture.asset("assets/home/Heart.svg"),
+                      SizedBox(width: 6.w),
+                      Text(
+                        category,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+        Container(
+          width: 82.w,
+          height: 36.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Color(0xffF3EBFF),
+
           ),
-          SizedBox(width: 14.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(30),
+              splashColor: Colors.white.withOpacity(0.15),
+              onTap: (){Navigator.pushNamed(context, RouteNames.productPage);},
+              child:  Center(
+                child: Text(
+                  "Ko'rish",
                   style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
+                    color: Color(0xff6F74F3),
+                    letterSpacing: 0.3,
                   ),
                 ),
-                SizedBox(height: 6.h),
-                Row(
-                  children: [
-                    Icon(Icons.favorite,
-                        size: 18.sp,
-                        color: Colors.pinkAccent),
-
-                    SizedBox(width: 6.w),
-
-                    Text(
-                      category,
-                      style: TextStyle(
-                        fontSize: 13.sp,
-                        color: Colors.grey,
-                      ),
-                    )
-                  ],
-                )
-              ],
+              ),
             ),
           ),
-
-          /// button
-          ElevatedButton(onPressed: (){
-            Navigator.pushNamed(context, RouteNames.productPage);
-          }, child: Text("Ko'rish")),
-        ],
+        )
+          ],
+        ),
       ),
     );
   }

@@ -17,8 +17,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   final List<String> filters = [
     "Pardalar",
     "Jalyuzi",
-    "Karnezlar",
+    "Karnizlar",
     "Aksesuarlar",
+    "Optom Pardalar",
+    "Sintafonlar",
   ];
 
   final gradient = const LinearGradient(
