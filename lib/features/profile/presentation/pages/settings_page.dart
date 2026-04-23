@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import '../../../auth/presentation/widgets/terms_bottom_sheet.dart';
 import '../../../home/presentation/widgets/back_widget.dart';
 import '../widgets/delete_widget.dart';
 import '../widgets/logout_widget.dart';
@@ -14,6 +15,19 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool _agreedToTerms = false;
+
+  void _openTerms() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => TermsBottomSheet(
+        onAccept: () =>
+            setState(() => _agreedToTerms = !_agreedToTerms),
+      ),
+    );
+  }
   bool _chatNotifications = true;
 
   static const _backgroundGradient = LinearGradient(
@@ -114,7 +128,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         SizedBox(height: 14.h),
                         _SettingsTile(
                           icon: Icons.assignment_rounded,
-                          gradient: const LinearGradient(
+                          gradient:  LinearGradient(
                             colors: [
                               Color(0xffD0AFFF),
                               Color(0xffC23AF5),
@@ -123,7 +137,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             end: Alignment.bottomRight,
                           ),
                           label: "Foydalanish shartlari",
-                          onTap: () {},
+                          onTap:  _openTerms,
                         ),
                         SizedBox(height: 14.h),
                         _SettingsTile(
@@ -180,7 +194,7 @@ class _SettingsTile extends StatelessWidget {
   final IconData icon;
   final String label;
   final Widget? trailing;
-  final VoidCallback? onTap;
+  final void Function()? onTap;
   final bool isDestructive;
   final LinearGradient? gradient;
 

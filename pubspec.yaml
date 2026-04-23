@@ -22,6 +22,7 @@ dependencies:
   another_flushbar: ^1.12.32
   pinput: ^6.0.2
   google_fonts: ^8.0.2
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:

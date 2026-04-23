@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 
+import 'contact_widget.dart';
+
 class TermsBottomSheet extends StatelessWidget {
-  final VoidCallback onAccept;
+  final void Function() onAccept;
 
   const TermsBottomSheet({super.key, required this.onAccept});
 
@@ -33,8 +36,8 @@ class TermsBottomSheet extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Row(
+                children: [
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -51,92 +54,102 @@ class TermsBottomSheet extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "1. Kirish",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
 
-                  Text(
+                  const Text(
                     "Ilovamizga xush kelibsiz. Ushbu ilovadan foydalanish orqali siz quyidagi foydalanish shartlari va qoidalariga rozilik bildirasiz. Iltimos, ilovadan foydalanishdan oldin ushbu shartlar bilan tanishib chiqing.",
                     style: TextStyle(fontSize: 14),
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "2. Foydalanish qoidalari",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                  Text(
+                  const Text(
                     "• Ilovadan faqat qonuniy maqsadlarda foydalanish kerak",
                   ),
-                  Text(
+                  const Text(
                     "• Noto‘g‘ri yoki yolg‘on ma’lumot kiritish taqiqlanadi",
                   ),
-                  Text(
+                  const Text(
                     "• Boshqa foydalanuvchilarga hurmat bilan munosabatda bo‘lish zarur",
                   ),
-                  Text(
+                  const Text(
                     "• Ilovadagi mahsulotlar va xizmatlar bo‘yicha barcha kelishuvlar foydalanuvchi va do‘kon o‘rtasida amalga oshiriladi",
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "3. Buyurtma va javobgarlik",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                  Text("• Ilova faqat vositachi platforma hisoblanadi"),
-                  Text("• Mahsulot sifati uchun do‘kon javobgar"),
-                  Text("• Narx va kelishuvlar chat orqali amalga oshiriladi"),
+                  const Text("• Ilova faqat vositachi platforma hisoblanadi"),
+                  const Text("• Mahsulot sifati uchun do‘kon javobgar"),
+                  const Text("• Narx va kelishuvlar chat orqali amalga oshiriladi"),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "4. Maxfiylik siyosati",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                  Text("• Sizning shaxsiy ma’lumotlaringiz himoyalanadi"),
-                  Text(
+                  const Text("• Sizning shaxsiy ma’lumotlaringiz himoyalanadi"),
+                  const Text(
                     "• Ma’lumotlar uchinchi shaxslarga berilmaydi (qonuniy holatlar bundan mustasno)",
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "5.  Cheklovlar",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "• Qoidalarni buzgan foydalanuvchilar bloklanishi mumkin",
                   ),
-                  Text("• Soxta faoliyat aniqlansa akkaunt o‘chiriladi"),
-                  SizedBox(height: 20),
+                  const Text("• Soxta faoliyat aniqlansa akkaunt o‘chiriladi"),
+                  const SizedBox(height: 20),
 
-                  Text(
+                  const Text(
                     "6.  Aloqa",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  Text(
+                  const Text(
                     "• Ushbu Maxfiylik siyosati bo‘yicha savollaringiz bo‘lsa, biz bilan bog‘laning:",
                   ),
 
-                  SizedBox(height: 10),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 50),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ContactWidget(svg: 'assets/backround_image/Icon.svg', text: 'Telefon Raqam', contact: '+998 90 000 00 00',),
+                      ContactWidget(svg: 'assets/backround_image/telegram.svg', text: 'Telegram', contact: 'LuxMarket_Support_bot',),
+                    ],
+                  ),
+
+                  const SizedBox(height: 50),
+
                 ],
               ),
             ),

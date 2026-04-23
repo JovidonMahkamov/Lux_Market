@@ -7,6 +7,8 @@ import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/gradient_background_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/text_field_wg.dart';
 
+import '../../../../core/constants/app_colors.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -48,12 +50,12 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 141),
-                  const Text(
+                   Text(
                     'Tizimga kirish',
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.w800,
-                      color: Color(0xFF1A1030),
+                      color: AppColors.darkGrey,
                       height: 1.15,
                       letterSpacing: -0.8,
                     ),
@@ -62,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Text(
                     'Biz bilan sayohatingizni davom ettiring.',
                     style: TextStyle(
-                      fontSize: 15.5,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Color(0xFF6B6480),
                       height: 1.4,
@@ -89,9 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                             const Text(
                               'Elektron pochta manzilingiz',
                               style: TextStyle(
-                                fontSize: 14.5,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF2D2050),
+                                letterSpacing: 0.6,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -103,14 +106,15 @@ class _LoginPageState extends State<LoginPage> {
                               readOnly: false,
                               height: 60,
                             ),
-            
+
                             const SizedBox(height: 18),
                             const Text(
                               'Parolingizni kiriting',
                               style: TextStyle(
-                                fontSize: 14.5,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF2D2050),
+                                letterSpacing: 0.6,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -133,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                               children: [
                                 TextButton(onPressed: (){
                                   Navigator.pushNamed(context, RouteNames.forgotPassword);
-                                }, child: Text("Parolni unutdingizmi?",style: TextStyle(color: Color(0xff5352ED),fontSize: 14.sp),))
+                                }, child: Text("Parolni unutdingizmi?",style: TextStyle(color: AppColors.blue, fontSize: 14.sp))),
                               ],
                             ),
                             const SizedBox(height: 14),
@@ -154,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: RichText(
                       text: TextSpan(
                         style: const TextStyle(
-                          fontSize: 14.5,
+                          fontSize: 16,
                           color: Color(0xFF6B6480),
                         ),
                         children: [
@@ -167,8 +171,8 @@ class _LoginPageState extends State<LoginPage> {
                               child: const Text(
                                 'Ro‘yxatdan o‘ting',
                                 style: TextStyle(
-                                  fontSize: 14.5,
-                                  color: Color(0xFF7B52D8),
+                                  fontSize: 16,
+                                  color: AppColors.blue,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),

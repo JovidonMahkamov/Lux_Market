@@ -131,8 +131,8 @@ class _ChatPageState extends State<ChatPage> {
                 color: Colors.white.withOpacity(0.6),
                 shape: BoxShape.circle,
               ),
-              child:  Icon(IconlyLight.chat,
-                  color: AppColors.purple, size: 28),
+              child:  Icon(IconlyBold.chat,
+                  color: Color(0xffC449F2), size: 30),
             ),
             SizedBox(width: 10.w),
             Text(
@@ -140,7 +140,7 @@ class _ChatPageState extends State<ChatPage> {
                   ? '${selectedIndexes.length} tanlangan'
                   : 'Chatlar',
               style:  TextStyle(
-                  fontWeight: FontWeight.w600, color: AppColors.darkGrey),
+                  fontWeight: FontWeight.w500, color: AppColors.darkGrey, fontSize: 20),
             ),
           ],
         ),

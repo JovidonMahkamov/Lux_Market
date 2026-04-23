@@ -1,4 +1,3 @@
-/// chatda yozish uchun kerak bo'ladigan itemlar
 class ChatMessageWorker {
   final String id;
   String text;

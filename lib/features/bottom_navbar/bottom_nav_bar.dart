@@ -2,27 +2,35 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lux_market/features/bottom_navbar/nav_item_wg.dart';
-import 'package:lux_market/features/buy/presentation/pages/buy_page.dart';
+import 'package:lux_market/features/buy/presentation/pages/cart_page.dart';
 import 'package:lux_market/features/chat/presentation/pages/chat_page.dart';
 import 'package:lux_market/features/home/presentation/pages/Home_page.dart';
 import 'package:lux_market/features/profile/presentation/pages/profile_page.dart';
 
 class BottomNavBarPage extends StatefulWidget {
-  const BottomNavBarPage({super.key});
+  final int initialIndex;
+
+  const BottomNavBarPage({super.key, this.initialIndex = 0});
 
   @override
   State<BottomNavBarPage> createState() => _BottomNavBarPageState();
 }
 
 class _BottomNavBarPageState extends State<BottomNavBarPage> {
-  int currentIndex = 0;
+  late int currentIndex;
 
   late final List<Widget> _pages = [
     HomePage(),
     ChatPage(),
-    BuyPage(),
+    CartPage(),
     ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

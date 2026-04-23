@@ -40,7 +40,10 @@ class AppRoute {
       case RouteNames.newPasswordPage:
         return MaterialPageRoute(builder: (_) => const NewPasswordPage());
       case RouteNames.bottomNavBar:
-        return MaterialPageRoute(builder: (_) => const BottomNavBarPage());
+        final index = routeSettings.arguments as int? ?? 0;
+        return MaterialPageRoute(builder: (_) =>  BottomNavBarPage(
+            initialIndex: index
+        ));
       case RouteNames.productPage:
         return MaterialPageRoute(builder: (_) => const ProductsPage());
       case RouteNames.productDetailPage:

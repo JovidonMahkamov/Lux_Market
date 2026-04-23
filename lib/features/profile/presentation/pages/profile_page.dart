@@ -56,9 +56,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                IconlyLight.profile,
-                color: AppColors.purple,
-                size: 24,
+                IconlyBold.profile,
+                color: Color(0xffC449F2),
+                size: 28,
               ),
             ),
             SizedBox(width: 10.w),

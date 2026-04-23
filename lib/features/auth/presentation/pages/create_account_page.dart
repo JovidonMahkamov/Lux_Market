@@ -8,6 +8,8 @@ import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/gradient_background_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/text_field_wg.dart';
 
+import '../../../../core/constants/app_colors.dart';
+
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
 
@@ -133,12 +135,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 80),
-                  const Text(
+                   Text(
                     'Hisobingizni yarating',
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.w800,
-                      color: Color(0xFF1A1030),
+                      color: AppColors.darkGrey,
                       height: 1.15,
                       letterSpacing: -0.8,
                     ),
@@ -147,7 +149,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                    Text(
                     'Ma’lumotlaringizni kiriting.',
                     style: GoogleFonts.poppins(
-                      fontSize: 15.5,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Color(0xFF6B6480),
                       height: 1.4,)
@@ -247,7 +249,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               ),
                               readOnly: false,
                             ),
-                            const SizedBox(height: 18),
+                            const SizedBox(height: 26),
                             ElevatedWidget(
                               onPressed: (){
                                 Navigator.pushNamed(context, RouteNames.login);

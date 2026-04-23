@@ -1,8 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/terms_bottom_sheet.dart';
 import 'package:lux_market/features/auth/presentation/widgets/text_field_wg.dart';
+
+import '../../../../core/constants/app_colors.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   final TextEditingController emailController;
@@ -40,13 +43,15 @@ class RegisterFormWidget extends StatelessWidget {
               const Text(
                 'Elektron pochta manzilingiz',
                 style: TextStyle(
-                  fontSize: 14.5,
+                  fontSize: 17,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF2D2050),
+                  color: AppColors.darkGrey,
+                  letterSpacing: 1,
                 ),
               ),
               const SizedBox(height: 12),
               TextFieldWidgetBoard(
+                prefixIcon: Icon(IconlyLight.message),
                 controller: emailController,
                 text: 'sizning@gmail.com',
                 obscureText: false,
@@ -98,14 +103,14 @@ class _TermsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
           onTap: agreedToTerms ? onToggle : onOpenTerms,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 22,
-            height: 22,
+            width: 26,
+            height: 26,
             decoration: BoxDecoration(
               color: agreedToTerms
                   ? const Color(0xFF7B52D8)
@@ -128,8 +133,8 @@ class _TermsRow extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               style: const TextStyle(
-                fontSize: 13.5,
-                color: Color(0xFF6B6480),
+                fontSize: 14,
+                color: AppColors.grey,
                 height: 1.45,
               ),
               children: [
@@ -142,7 +147,7 @@ class _TermsRow extends StatelessWidget {
                     child: const Text(
                       'Foydalanish shartlari.',
                       style: TextStyle(
-                        fontSize: 13.5,
+                        fontSize: 14,
                         color: Color(0xFF7B52D8),
                         fontWeight: FontWeight.w600,
                       ),

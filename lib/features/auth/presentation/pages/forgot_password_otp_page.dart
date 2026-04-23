@@ -7,6 +7,8 @@ import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/gradient_background_wg.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../../core/constants/app_colors.dart';
+
 class ForgotPasswordOtpPage extends StatefulWidget {
   final String email;
 
@@ -31,7 +33,6 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
   void initState() {
     super.initState();
 
-    // expires_at ni birinchi init qilib ol
     _expiresAt = DateTime.now().add(Duration(seconds: 45));
 
     _startTimer();
@@ -47,7 +48,6 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
   void _startTimer() {
     _timer?.cancel();
 
-    // darhol 1 marta hisoblab qo'yamiz (UI yangilansin)
     _syncRemaining();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -101,12 +101,12 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 141),
-                  const Text(
+                   Text(
                     'Emailingizni tasdiqlang',
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.w800,
-                      color: Color(0xFF1A1030),
+                      color: AppColors.darkGrey,
                       height: 1.15,
                       letterSpacing: -0.8,
                     ),
@@ -115,7 +115,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                   Text(
                     'Tasdiqlash kodi ${widget.email} emailga yuborildi',
                     style: TextStyle(
-                      fontSize: 15.5,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Color(0xFF6B6480),
                       height: 1.4,
@@ -146,6 +146,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                                 fontSize: 14.5,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF2D2050),
+                                letterSpacing: 1,
                               ),
                             ),
 
@@ -163,7 +164,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                                   fontSize: 20,
                                   color: Colors.black,
                                 ),
-                                decoration: BoxDecoration(color: Color(0xffF2EEF8),
+                                decoration: BoxDecoration(color: AppColors.white,
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
                                     color: const Color(0xffCCCCCC),
@@ -198,7 +199,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                             const SizedBox(height: 20),
                             Text(
                               "Pochta manzilingizga kelgan kodni kiriting.",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(fontSize: 14, color: AppColors.grey),
                             ),
                           ],
                         ),
@@ -213,7 +214,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                         _canResend
                             ? "Tasdiqlash kodini olmadingizmi?"
                             : "Qayta yuborish $_remainingText s",
-                        style: TextStyle(fontSize: 14.sp, color: Colors.black54),
+                        style: TextStyle(fontSize: 14.sp, color: AppColors.darkGrey),
                       ),
                       TextButton(
                         onPressed: _canResend ? _resendCode : null,
@@ -221,7 +222,7 @@ class _ForgotPasswordOtpPageState extends State<ForgotPasswordOtpPage> {
                           "Qayta yuborish",
                           style: TextStyle(
                             color: _canResend
-                                ? Colors.blue
+                                ? AppColors.blue
                                 : Colors.grey.shade400,
                           ),
                         ),

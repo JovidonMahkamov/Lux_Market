@@ -23,7 +23,7 @@ class GradientBackground extends StatelessWidget {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 60, sigmaY: 60),
             child: Container(
-              // color: const Color(0xFFF1F2F6).withOpacity(0.45),
+              color: const Color(0xFFF1F2F6).withOpacity(0.2),
             ),
           ),
         ),
@@ -51,14 +51,12 @@ class _BlobPainter extends CustomPainter {
             Color(0xFFFFB6C1),
             Colors.transparent,
           ],
-          stops: const [0.2, 0.4, 0.7, 1.0],
+          stops: const [0.02, 0.5, 0.8, 0.7],
         ).createShader(Rect.fromCircle(
           center: Offset(size.width * 0.90, size.height * 0.10),
           radius: size.width * 0.65,
         )),
     );
-
-    // Past blob
     canvas.drawCircle(
       Offset(size.width * 0.12, size.height * 0.90),
       size.width * 0.50,
@@ -70,7 +68,7 @@ class _BlobPainter extends CustomPainter {
             Color(0xFFFFB6C1),
             Colors.transparent,
           ],
-          stops: const [0.2, 0.4, 0.7, 1.0],
+          stops: const [0.02, 0.5, 0.8, 1],
         ).createShader(Rect.fromCircle(
           center: Offset(size.width * 0.12, size.height * 0.90),
           radius: size.width * 0.40,

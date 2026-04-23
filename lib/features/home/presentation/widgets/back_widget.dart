@@ -7,7 +7,7 @@ class BackWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 26,
+      radius: 24,
       child: IconButton(
         onPressed: () {
           Navigator.pop(context);

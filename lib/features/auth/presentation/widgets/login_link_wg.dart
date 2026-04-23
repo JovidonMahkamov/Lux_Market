@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lux_market/core/constants/app_colors.dart';
 
 class LoginLinkWidget extends StatelessWidget {
   final String? text;
@@ -11,7 +12,7 @@ class LoginLinkWidget extends StatelessWidget {
     return Center(
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(fontSize: 14.5, color: Color(0xFF6B6480)),
+          style: const TextStyle(fontSize: 16,  color: AppColors.darkGrey),
           children: [
              TextSpan(text: text),
             WidgetSpan(
@@ -20,9 +21,9 @@ class LoginLinkWidget extends StatelessWidget {
                 child:  Text(
                   text1,
                   style: TextStyle(
-                    fontSize: 14.5,
-                    color: Color(0xFF7B52D8),
-                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: AppColors.blue,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),

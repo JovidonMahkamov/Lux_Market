@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:lux_market/core/constants/app_colors.dart';
 import 'package:lux_market/core/routes/route_names.dart';
 import 'package:lux_market/features/auth/presentation/widgets/gradient_background_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/login_link_wg.dart';
@@ -53,12 +54,12 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 141),
-              const Text(
+               Text(
                 'Hisobingizni yarating',
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.w800,
-                  color: Color(0xFF1A1030),
+                  color: AppColors.darkGrey,
                   height: 1.15,
                   letterSpacing: -0.8,
                 ),
@@ -67,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const Text(
                 'Sayohatingizni biz bilan boshlang.',
                 style: TextStyle(
-                  fontSize: 15.5,
+                  fontSize: 16,
                   color: Color(0xFF6B6480),
                   height: 1.4,
                 ),

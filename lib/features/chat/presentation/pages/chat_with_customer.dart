@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lux_market/core/constants/app_colors.dart';
 import 'package:lux_market/features/chat/presentation/widgets/chat_bubble_worker_widget.dart';
 import 'package:lux_market/features/chat/presentation/widgets/chat_message_worker.dart';
+import 'package:lux_market/features/home/presentation/widgets/back_widget.dart';
 
 class ChatWithCustomerPage extends StatefulWidget {
   final String name;
@@ -291,192 +294,195 @@ class _ChatWithCustomerPageState extends State<ChatWithCustomerPage> {
         if (_showPlusMenu) setState(() => _showPlusMenu = false);
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFFF2F2F7),
+        backgroundColor: AppColors.white,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
           flexibleSpace: Container(
             decoration: const BoxDecoration(gradient: _appBarGradient),
           ),
-          leading: _isSelectionMode
-              ? GestureDetector(
-            onTap: _clearSelection,
-            child: Container(
-              margin: EdgeInsets.all(8.r),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.close,
-                      color: Colors.purple, size: 16),
-                  SizedBox(width: 2.w),
-                  Text(
-                    '${_selectedIndexes.length}',
-                    style: const TextStyle(
-                        color: Colors.purple,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14),
+          title: Row(
+            children: [
+              if (_isSelectionMode)
+                GestureDetector(
+                  onTap: _clearSelection,
+                  child: Container(
+                    margin: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    height: 36.h,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.close,
+                            color: Colors.purple, size: 16),
+                        SizedBox(width: 2.w),
+                        Text(
+                          '${_selectedIndexes.length}',
+                          style: const TextStyle(
+                            color: Colors.purple,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-          )
-              : GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              margin: EdgeInsets.all(8.r),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.arrow_back_ios_new,
-                  color: Colors.black87, size: 18),
-            ),
+                )
+              else
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: BackWidget(),
+                ),
+              SizedBox(width: 10.w),
+              if (!_isSelectionMode)
+                Expanded(
+                  child: Text(
+                    widget.name,
+                    style:  TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.darkGrey,
+                      fontSize: 20,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+            ],
           ),
-          title: _isSelectionMode
-              ? null
-              : Text(
-            widget.name,
-            style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Colors.black87,
-                fontSize: 18),
-          ),
-          actions: [
-            // Telefon icon
-            if (!_isSelectionMode)
-              Container(
-                margin: EdgeInsets.only(right: 8.w),
-                width: 42.w,
-                height: 42.w,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  shape: BoxShape.circle,
+            actions: [
+              if (!_isSelectionMode)
+                Container(
+                  margin: EdgeInsets.only(right: 8.w),
+                  width: 42.w,
+                  height: 42.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.phone_outlined,
+                      color: Colors.purple, size: 20),
                 ),
-                child: const Icon(Icons.phone_outlined,
-                    color: Colors.purple, size: 20),
-              ),
 
-            // Selection mode — delete icon
-            if (_isSelectionMode)
-              Container(
-                margin: EdgeInsets.only(right: 12.w),
-                width: 42.w,
-                height: 42.w,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  shape: BoxShape.circle,
+              // Selection mode — delete icon
+              if (_isSelectionMode)
+                Container(
+                  margin: EdgeInsets.only(right: 12.w),
+                  width: 42.w,
+                  height: 42.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.delete_outline,
+                        color: Colors.purple, size: 22),
+                    onPressed: _selectedIndexes.isEmpty
+                        ? null
+                        : _deleteSelectedMessages,
+                  ),
                 ),
-                child: IconButton(
-                  icon: const Icon(Icons.delete_outline,
-                      color: Colors.purple, size: 22),
-                  onPressed: _selectedIndexes.isEmpty
-                      ? null
-                      : _deleteSelectedMessages,
-                ),
-              ),
 
-            // more_vert
-            if (!_isSelectionMode)
-              Container(
-                margin: EdgeInsets.only(right: 12.w),
-                width: 42.w,
-                height: 42.w,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  shape: BoxShape.circle,
+              // more_vert
+              if (!_isSelectionMode)
+                Container(
+                  margin: EdgeInsets.only(right: 12.w),
+                  width: 42.w,
+                  height: 42.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    shape: BoxShape.circle,
+                  ),
+                  child: PopupMenuButton<String>(
+                    icon: const Icon(Icons.more_vert,
+                        color: Colors.black87, size: 22),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.r)),
+                    color: Colors.white,
+                    elevation: 8,
+                    offset: const Offset(0, 50),
+                    onSelected: (value) {
+                      if (value == 'mute') {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content:
+                            Text("Bildirishnomalar o'chirildi")));
+                      } else if (value == 'clear') {
+                        _clearHistory();
+                      } else if (value == 'delete') {
+                        _deleteChat();
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      // Bildirishnomalarni o'chirish
+                      PopupMenuItem<String>(
+                        value: 'mute',
+                        child: Row(children: [
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.red.withOpacity(0.1),
+                              shape: BoxShape.circle,
+                            ),
+                            child:  Icon(
+                                Icons.notifications_off_outlined,
+                                color: AppColors.error,
+                                size: 18),
+                          ),
+                          SizedBox(width: 10.w),
+                          const Text("Bildirishnomalarni o'chirish",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.red)),
+                        ]),
+                      ),
+                      // Tarixni tozalash
+                      PopupMenuItem<String>(
+                        value: 'clear',
+                        child: Row(children: [
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(0.1),
+                              shape: BoxShape.circle,
+                            ),
+                            child: SvgPicture.asset("assets/home/clear.svg")
+                          ),
+                          SizedBox(width: 10.w),
+                           Text("Tarixni tozalash",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500, color: AppColors.darkGrey)),
+                        ]),
+                      ),
+                      // Chatni o'chirish
+                      PopupMenuItem<String>(
+                        value: 'delete',
+                        child: Row(children: [
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(0.1),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.delete_outline,
+                                color: Colors.black87, size: 18),
+                          ),
+                          SizedBox(width: 10.w),
+                          const Text("Chatni o'chirish",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500, color: AppColors.darkGrey)),
+                        ]),
+                      ),
+                    ],
+                  ),
                 ),
-                child: PopupMenuButton<String>(
-                  icon: const Icon(Icons.more_vert,
-                      color: Colors.black87, size: 22),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.r)),
-                  color: Colors.white,
-                  elevation: 8,
-                  offset: const Offset(0, 50),
-                  onSelected: (value) {
-                    if (value == 'mute') {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content:
-                          Text("Bildirishnomalar o'chirildi")));
-                    } else if (value == 'clear') {
-                      _clearHistory();
-                    } else if (value == 'delete') {
-                      _deleteChat();
-                    }
-                  },
-                  itemBuilder: (context) => [
-                    // Bildirishnomalarni o'chirish
-                    PopupMenuItem<String>(
-                      value: 'mute',
-                      child: Row(children: [
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                              Icons.notifications_off_outlined,
-                              color: Colors.red,
-                              size: 18),
-                        ),
-                        SizedBox(width: 10.w),
-                        const Text("Bildirishnomalarni o'chirish",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.red)),
-                      ]),
-                    ),
-                    // Tarixni tozalash
-                    PopupMenuItem<String>(
-                      value: 'clear',
-                      child: Row(children: [
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(Icons.cleaning_services_outlined,
-                              color: Colors.black87, size: 18),
-                        ),
-                        SizedBox(width: 10.w),
-                        const Text("Tarixni tozalash",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500)),
-                      ]),
-                    ),
-                    // Chatni o'chirish
-                    PopupMenuItem<String>(
-                      value: 'delete',
-                      child: Row(children: [
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(Icons.delete_outline,
-                              color: Colors.black87, size: 18),
-                        ),
-                        SizedBox(width: 10.w),
-                        const Text("Chatni o'chirish",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500)),
-                      ]),
-                    ),
-                  ],
-                ),
-              ),
-          ],
+            ],
         ),
 
         body: SafeArea(
@@ -723,7 +729,7 @@ class _ChatWithCustomerPageState extends State<ChatWithCustomerPage> {
         children: [
           _plusMenuItem(Icons.camera_alt_outlined, 'Kamera'),
           _plusMenuItem(Icons.photo_library_outlined, 'Galereya'),
-          _plusMenuItem(Icons.attach_file_outlined, 'Fayl'),
+          _plusMenuItem(Icons.location_on_outlined, 'Lokatsiya'),
         ],
       ),
     );

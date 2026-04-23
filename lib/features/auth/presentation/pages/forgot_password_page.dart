@@ -7,6 +7,8 @@ import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/gradient_background_wg.dart';
 import 'package:lux_market/features/auth/presentation/widgets/text_field_wg.dart';
 
+import '../../../../core/constants/app_colors.dart';
+
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
@@ -51,12 +53,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     Navigator.pop(context);
                   }, icon: Icon(Icons.arrow_back_ios)),
                   const SizedBox(height: 141),
-                  const Text(
+                   Text(
                     'Parolni unutdingizmi?',
                     style: TextStyle(
                       fontSize: 34,
                       fontWeight: FontWeight.w800,
-                      color: Color(0xFF1A1030),
+                      color: AppColors.darkGrey,
                       height: 1.15,
                       letterSpacing: -0.8,
                     ),
@@ -65,7 +67,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   const Text(
                     'Emailingizga 4 - xonali kod yuboriladi.',
                     style: TextStyle(
-                      fontSize: 15.5,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Color(0xFF6B6480),
                       height: 1.4,
@@ -90,12 +92,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                             Text(
                               'Elektron pochta manzilingiz',
                               style: TextStyle(
                                 fontSize: 14.5,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF2D2050),
+                                color: AppColors.darkGrey,
+                                letterSpacing: 1,
                               ),
                             ),
                             const SizedBox(height: 12),
