@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import 'contact_widget.dart';
 
 class TermsBottomSheet extends StatelessWidget {
@@ -15,7 +16,7 @@ class TermsBottomSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.85,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: const BoxDecoration(
-        color: Color(0xffF5F5F7),
+        color: AppColors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
       child: Column(

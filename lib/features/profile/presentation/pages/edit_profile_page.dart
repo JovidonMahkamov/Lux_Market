@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lux_market/features/auth/presentation/widgets/elevated_wg.dart';
 import 'package:lux_market/features/home/presentation/widgets/back_widget.dart';
+import 'package:lux_market/features/profile/presentation/widgets/profile_image_picker.dart';
 
 import '../../../../core/constants/app_colors.dart';
 
@@ -89,50 +90,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            Container(
-                              width: 100.w,
-                              height: 100.w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFFE8DEFF),
-                                border: Border.all(
-                                  color: AppColors.purple,
-                                  width: 2.5,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              bottom: 2,
-                              right: 2,
-                              child: Container(
-                                width: 32.w,
-                                height: 32.w,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xffD0AFFF),
-                                      Color(0xffC23AF5),
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: Colors.white, width: 2),
-                                ),
-                                child: Icon(
-                                  Icons.camera_alt_rounded,
-                                  color: Colors.white,
-                                  size: 15.sp,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
+                        ProfileImagePicker(),
                         SizedBox(height: 32.h),
                         _buildFieldLabel("Ism"),
                         SizedBox(height: 8.h),

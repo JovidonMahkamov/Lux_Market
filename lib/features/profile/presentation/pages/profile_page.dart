@@ -132,39 +132,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              bottom: 2,
-                              right: 2,
-                              child: Container(
-                                width: 34.w,
-                                height: 34.w,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xffD0AFFF),
-                                      Color(0xffC23AF5),
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 2,
-                                  ),
-                                ),
-                                child: Icon(
-                                  Icons.camera_alt_rounded,
-                                  color: Colors.white,
-                                  size: 16.sp,
-                                ),
-                              ),
-                            ),
                           ],
                         ),
-
                         SizedBox(height: 20.h),
-
                         Text(
                           "Sevinch Sharobidinova",
                           style: TextStyle(
@@ -173,9 +143,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: const Color(0xFF2D2D2D),
                           ),
                         ),
-
                         SizedBox(height: 8.h),
-
                         Text(
                           "sharobidinovasevinch@gmail.com",
                           style: TextStyle(
@@ -184,9 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: AppColors.grey,
                           ),
                         ),
-
                         SizedBox(height: 6.h),
-
                         Text(
                           "+998 90 000 00 00",
                           style: TextStyle(

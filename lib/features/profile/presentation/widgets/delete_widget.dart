@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lux_market/features/home/presentation/widgets/text_widget.dart';
-
-import '../../../../core/constants/app_colors.dart';
 
 class DeleteProfileDialog extends StatelessWidget {
   const DeleteProfileDialog({super.key});

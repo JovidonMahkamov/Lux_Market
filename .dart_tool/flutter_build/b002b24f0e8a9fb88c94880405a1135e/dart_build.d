@@ -1,0 +1,1 @@
+ /Users/macbook/StudioProjects/lux_market/.dart_tool/flutter_build/b002b24f0e8a9fb88c94880405a1135e/dart_build_result.json:  /Users/macbook/StudioProjects/lux_market/.dart_tool/package_config.json /Users/macbook/StudioProjects/lux_market/pubspec.yaml /Users/macbook/development/flutter/bin/cache/dart-sdk/version
