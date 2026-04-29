@@ -174,28 +174,16 @@ class _FilledCartState extends State<_FilledCart> {
                   ),
                 ),
                 Padding(
-                  padding:
-                  EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 8.h),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
                   child: Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Mening Savatim",
+                        "Mening Savatim:",
                         style: TextStyle(
-                          fontSize: 15.sp,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
                           color: AppColors.darkGrey,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: widget.cart.clearAll,
-                        child: Text(
-                          "Tanlanganlarni o'chirish (${widget.cart.totalCount})",
-                          style: TextStyle(
-                              fontSize: 12.sp,
-                              color: const Color(0xFFE86F6F),
-                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
@@ -452,7 +440,6 @@ class _CartItemRow extends StatelessWidget {
               ],
             ),
           ),
-          // Counter + delete
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

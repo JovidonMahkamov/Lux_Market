@@ -1,8 +1,5 @@
-// lib/features/cart/cart_provider.dart
-
 import 'package:flutter/material.dart';
 
-/// Bitta mahsulot modeli
 class CartItem {
   final String id;
   final String shopName;
@@ -25,9 +22,7 @@ class CartItem {
   double get totalPrice => newPrice * quantity;
 }
 
-/// Savat holati — butun app bo'ylab ishlaydi
 class CartProvider extends ChangeNotifier {
-  // Do'kon nomi => mahsulotlar ro'yxati
   final Map<String, List<CartItem>> _shopItems = {};
 
   Map<String, List<CartItem>> get shopItems => _shopItems;
@@ -37,7 +32,6 @@ class CartProvider extends ChangeNotifier {
 
   int get totalCount => allItems.length;
 
-  // Qo'shish
   void addItem(CartItem item) {
     _shopItems.putIfAbsent(item.shopName, () => []);
     final existing =
@@ -50,7 +44,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Bitta mahsulotni o'chirish
   void removeItem(String shopName, String itemId) {
     _shopItems[shopName]?.removeWhere((e) => e.id == itemId);
     if (_shopItems[shopName]?.isEmpty ?? false) {
@@ -59,7 +52,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Miqdor o'zgartirish
   void updateQuantity(String shopName, String itemId, double qty) {
     final item = _shopItems[shopName]
         ?.where((e) => e.id == itemId)
@@ -70,13 +62,11 @@ class CartProvider extends ChangeNotifier {
     }
   }
 
-  // Hammasini tozalash
   void clearAll() {
     _shopItems.clear();
     notifyListeners();
   }
 
-  // Do'kon jami narxi
   double shopTotal(String shopName) =>
       (_shopItems[shopName] ?? []).fold(0, (s, e) => s + e.totalPrice);
 }

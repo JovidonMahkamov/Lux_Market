@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
-import 'package:lux_market/core/constants/app_colors.dart';
-import 'package:lux_market/features/chat/presentation/pages/chat_with_customer.dart';
-import 'package:lux_market/features/chat/presentation/widgets/chat_list_worker.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../widgets/chat_list_worker.dart';
+import 'chat_with_customer.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -17,11 +17,11 @@ class _ChatPageState extends State<ChatPage> {
   final Set<int> selectedIndexes = {};
 
   final List<ChatListWorker> _rooms = [
-    ChatListWorker(id: '1', name: 'Royal Curtains', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
-    ChatListWorker(id: '2', name: 'Lux Market', lastMessage: 'Rahmat!', time: '09:38', unread: 1),
-    ChatListWorker(id: '3', name: 'Lux Market', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
-    ChatListWorker(id: '4', name: 'Lux Market', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
-    ChatListWorker(id: '5', name: 'Lux Market', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
+    ChatListWorker(id: '1', name: 'Olam Pardalar', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
+    ChatListWorker(id: '2', name: 'Olam Pardalar', lastMessage: 'Rahmat!', time: '09:38', unread: 1),
+    ChatListWorker(id: '3', name: 'Olam Pardalar', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
+    ChatListWorker(id: '4', name: 'Olam Pardalar', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
+    ChatListWorker(id: '5', name: 'Olam Pardalar', lastMessage: 'Rahmat!', time: '09:38', unread: 0),
   ];
 
   static const _backgroundGradient = LinearGradient(
@@ -59,26 +59,67 @@ class _ChatPageState extends State<ChatPage> {
     final ok = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("Chatni o'chirish",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20)),
+        backgroundColor: Colors.white,
+        title: Center(
+          child: const Text("Chatni o'chirish",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20,  color: Colors.red,)),
+        ),
         content: Text("${selectedIndexes.length} ta chatni o'chirmoqchimisiz?",
-            style: const TextStyle(fontSize: 16)),
+          style: TextStyle(
+            fontSize: 15.sp,
+            color: Colors.red,
+          ),),
         actions: [
           Row(
             children: [
               Expanded(
-                child: OutlinedButton(
-                  onPressed: () => Navigator.pop(context, false),
-                  child: const Text('Bekor qilish'),
+                child: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    height: 46.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30.r),
+                      border: Border.all(color: Color(0xffECE5E5FF)),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Bekor qilish",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: const Color(0xFFC23AF5),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: 12.w),
               Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  onPressed: () => Navigator.pop(context, true),
-                  child: const Text('O\'chirish',
-                      style: TextStyle(color: Colors.white)),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    height: 46.h,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFC86EF9), Color(0xFF8B7CF6)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Ha, o'chirish",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: AppColors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -155,7 +196,7 @@ class _ChatPageState extends State<ChatPage> {
                 }
               },
               icon: Icon(
-                Icons.delete_outline,
+                IconlyLight.delete,
                 size: 26,
                 color: selectedIndexes.isEmpty ? Colors.black : Colors.red,
               ),
@@ -196,13 +237,13 @@ class _ChatPageState extends State<ChatPage> {
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(Icons.notifications_off_outlined,
-                            color: Colors.red, size: 18),
+                            color: AppColors.error, size: 18),
                       ),
                       SizedBox(width: 10.w),
                       const Text(
                         "Bildirishnomalarni o'chirish",
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500),
+                            fontSize: 15, fontWeight: FontWeight.w400, color: AppColors.darkGrey),
                       ),
                     ],
                   ),
@@ -218,14 +259,14 @@ class _ChatPageState extends State<ChatPage> {
                           color: Colors.red.withOpacity(0.1),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.delete_outline,
-                            color: Colors.red, size: 18),
+                        child: const Icon(IconlyLight.delete,
+                            color: AppColors.error, size: 18),
                       ),
                       SizedBox(width: 10.w),
                       const Text(
-                        "Chatlarni o'chirish",
+                        "Chatlarni o'chirish" ,
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500),
+                            fontSize: 15, fontWeight: FontWeight.w400, color: AppColors.darkGrey),
                       ),
                     ],
                   ),
@@ -343,7 +384,7 @@ class _ChatPageState extends State<ChatPage> {
                       Container(
                         padding: const EdgeInsets.all(6),
                         decoration: const BoxDecoration(
-                            color: Colors.blue, shape: BoxShape.circle),
+                            color: Color(0xff9859EF), shape: BoxShape.circle),
                         child: Text(
                           room.unread.toString(),
                           style: const TextStyle(

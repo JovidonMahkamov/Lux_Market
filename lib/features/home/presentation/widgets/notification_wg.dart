@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lux_market/core/constants/app_colors.dart';
-import 'package:lux_market/core/routes/route_names.dart';
-import 'package:lux_market/features/home/presentation/widgets/text_widget.dart';
 
 class NotificationWg extends StatelessWidget {
   final String title;
@@ -18,7 +16,6 @@ class NotificationWg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){Navigator.pushNamed(context, RouteNames.productPage);},
       child: Container(
         margin: EdgeInsets.only(bottom: 18.h),
         padding: EdgeInsets.all(8.w),
